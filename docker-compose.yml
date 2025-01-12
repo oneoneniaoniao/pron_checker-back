@@ -1,0 +1,34 @@
+services:
+  db:
+    image: postgres:15
+    container_name: myapp-postgres
+    environment:
+      POSTGRES_DB: myapp_db
+      POSTGRES_USER: myapp_user
+      POSTGRES_PASSWORD: myapp_pass
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    # 必要なら restart: always を付ける
+
+  backend:
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: myapp-backend
+    ports:
+      - "3001:3001"
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: myapp_user
+      DB_PASS: myapp_pass
+      DB_NAME: myapp_db
+    volumes:
+      - ./backend/src:/usr/src/app/src 
+
+volumes:
+  db-data:
