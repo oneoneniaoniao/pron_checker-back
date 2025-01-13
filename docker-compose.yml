@@ -13,9 +13,9 @@ services:
     # 必要なら restart: always を付ける
 
   backend:
-    build: 
-      context: ./backend
-      dockerfile: Dockerfile
+    build:
+      context: .
+      dockerfile: ./backend/Dockerfile
     container_name: myapp-backend
     ports:
       - "3001:3001"
@@ -28,7 +28,7 @@ services:
       DB_PASS: myapp_pass
       DB_NAME: myapp_db
     volumes:
-      - ./backend/src:/usr/src/app/src 
+      - ./backend/src:/usr/src/app/src
 
 volumes:
   db-data:

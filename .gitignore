@@ -26,8 +26,6 @@ out/
 # Typescript cache
 *.tsbuildinfo
 
-# Vite cache
-.vite/
 .vscode/
 
 # OS-specific files
@@ -38,8 +36,3 @@ Thumbs.db
 backend/node_modules/
 backend/dist/
 backend/src/.env
-
-# Ignore frontend-specific files
-frontend/node_modules/
-frontend/dist/
-frontend/.env
