@@ -10,7 +10,7 @@ services:
       - "5432:5432"
     volumes:
       - db-data:/var/lib/postgresql/data
-    # 必要なら restart: always を付ける
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
 
   backend:
     build:
@@ -29,6 +29,7 @@ services:
       DB_NAME: myapp_db
     volumes:
       - ./backend/src:/usr/src/app/src
+      - ./audio:/usr/src/app/audio
 
 volumes:
   db-data:
