@@ -3,9 +3,9 @@ services:
     image: postgres:15
     container_name: myapp-postgres
     environment:
-      POSTGRES_DB: myapp_db
-      POSTGRES_USER: myapp_user
-      POSTGRES_PASSWORD: myapp_pass
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
       - "5432:5432"
     volumes:
@@ -24,9 +24,9 @@ services:
     environment:
       DB_HOST: db
       DB_PORT: 5432
-      DB_USER: myapp_user
-      DB_PASS: myapp_pass
-      DB_NAME: myapp_db
+      DB_USER: ${POSTGRES_USER}
+      DB_PASS: ${POSTGRES_PASSWORD}
+      DB_NAME: ${POSTGRES_DB}
     volumes:
       - ./backend/src:/usr/src/app/src
       - ./audio:/usr/src/app/audio

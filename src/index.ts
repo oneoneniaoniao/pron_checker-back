@@ -6,11 +6,11 @@ const port = process.env.PORT || 3001;
 
 // 1) DB 接続プールを作成 (環境変数から読み取る)
 const pool = new Pool({
-  host: process.env.DB_HOST || "db", // docker-compose で定義した service名: db
+  host: process.env.DB_HOST || "db",
   port: parseInt(process.env.DB_PORT || "5432"),
-  user: process.env.DB_USER || "myapp_user",
-  password: process.env.DB_PASS || "myapp_pass",
-  database: process.env.DB_NAME || "myapp_db",
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME,
 });
 
 // 2) ルート (/)
@@ -35,16 +35,3 @@ app.get("/db", async (req, res) => {
 app.listen(port, () => {
   console.log(`Backend server is running on port ${port}`);
 });
-
-// import express from 'express';
-
-// const app = express();
-// const port = process.env.PORT || 3001;
-
-// app.get('/', (req, res) => {
-//   res.send('Hello from Express/TypeScript!');
-// });
-
-// app.listen(port, () => {
-//   console.log(`Backend server is running on port ${port}`);
-// });
