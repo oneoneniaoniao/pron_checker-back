@@ -15,7 +15,7 @@ services:
   backend:
     build:
       context: .
-      dockerfile: ./Dockerfile
+      dockerfile: ./Dockerfile.dev
     container_name: myapp-backend
     ports:
       - "3001:3001"
@@ -27,8 +27,9 @@ services:
       DB_USER: ${POSTGRES_USER}
       DB_PASS: ${POSTGRES_PASSWORD}
       DB_NAME: ${POSTGRES_DB}
+    # 本番環境では削除
     volumes:
-      - ./backend/src:/usr/src/app/src
+      - .:/usr/src/app
       - ./audio:/usr/src/app/audio
 
 volumes:
