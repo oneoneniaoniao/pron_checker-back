@@ -6,7 +6,7 @@ class WordRepository implements IWordRepository {
     const result = await pool.query(
       "SELECT * FROM words ORDER BY RANDOM() LIMIT 1",
     );
-    return result.rows[0];
+    return result.rows[0] ?? null;
   }
 }
 

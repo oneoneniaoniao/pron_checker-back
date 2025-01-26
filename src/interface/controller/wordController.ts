@@ -1,17 +1,16 @@
 import { Request, Response } from "express";
-import { WordUseCase } from "@/application/usecases/WordUseCase";
-import { wordRepository } from "@/infrastructure/repository/WordRepository";
+import { IWordUseCase } from "@/application/usecase/IWordUseCase";
 
 export class WordController {
-  private wordUseCase: WordUseCase;
+  private wordUseCase: IWordUseCase;
 
-  constructor() {
-    this.wordUseCase = new WordUseCase(wordRepository);
+  constructor(wordUseCase: IWordUseCase) {
+    this.wordUseCase = wordUseCase;
   }
 
-  public async getRandomWord(req: Request, res: Response): Promise<Response> {
+  public async getRandom(req: Request, res: Response): Promise<Response> {
     try {
-      const randomWord = await this.wordUseCase.getRandomWord();
+      const randomWord = await this.wordUseCase.getRandom();
       return res.status(200).json(randomWord);
     } catch (error) {
       return res

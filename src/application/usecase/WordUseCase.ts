@@ -1,10 +1,11 @@
+import { IWordUseCase } from "@/application/usecase/IWordUseCase";
 import { IWordRepository } from "@/domain/repository/IWordRepository";
 import { Word } from "@/domain/model/Word";
 
-export class WordUseCase {
+export class WordUseCase implements IWordUseCase {
   constructor(private wordRepository: IWordRepository) {}
 
-  async getRandomWord(): Promise<Word | null> {
+  async getRandom(): Promise<Word | null> {
     return this.wordRepository.findRandom();
   }
 }
