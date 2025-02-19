@@ -7,6 +7,6 @@ const router = Router();
 const wordUseCase = new WordUseCase(wordRepository);
 const wordController = new WordController(wordUseCase);
 
-router.get("/word/random", (req, res) => wordController.getRandom(req, res));
+router.get("/random", (req, res) => wordController.getRandom(req, res));
 
 export default router;
