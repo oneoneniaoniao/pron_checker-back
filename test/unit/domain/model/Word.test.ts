@@ -12,7 +12,7 @@ describe("Word", () => {
 
     expect(word.id).toBe(1);
     expect(word.word1_text).toBe("hello");
-    expect(word.word1_url).toBe("hello_url");
+    expect(word.word1_url).toBe("https://hello.com");
     expect(word.word2_text).toBe("world");
     expect(word.word2_url).toBe("https://world.com");
   });

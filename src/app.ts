@@ -7,7 +7,6 @@ import cors from "cors";
 import wordRoutes from "@/route/wordRoutes";
 
 const app = express();
-const port = process.env.PORT || 3001;
 
 app.use(express.json());
 
@@ -38,9 +37,5 @@ app.use(
     res.status(500).json({ message: "Internal Server Error" });
   },
 );
-
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
 
 export { app };

@@ -1,5 +1,5 @@
 import request from "supertest";
-import { app } from "@/server";
+import { app } from "@/app";
 import { pool } from "@/config/db";
 
 jest.mock("@/config/db", () => ({
