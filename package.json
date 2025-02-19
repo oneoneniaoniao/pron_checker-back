@@ -12,7 +12,7 @@
     "test": "jest --verbose"
   },
   "lint-staged": {
-    "*.ts": [
+    "*.{js,jsx,ts,tsx}": [
       "eslint --fix",
       "prettier --write"
     ],
