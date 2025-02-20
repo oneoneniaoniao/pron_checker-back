@@ -16,7 +16,6 @@ class WordRepository implements IWordRepository {
 
   private toDomainModel(row: WordRow): Word {
     return new Word(
-      row.id,
       row.word1_text,
       row.word1_url,
       row.word2_text,

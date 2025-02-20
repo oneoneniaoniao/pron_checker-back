@@ -7,13 +7,13 @@ export class WordUseCase implements IWordUseCase {
   async getRandom(): Promise<IWordDTO | null> {
     const result = await this.wordRepository.findRandom();
     if (!result) return null;
-    const { word1_text, word1_url, word2_text, word2_url } = result;
+    const { word1Text, word1Url, word2Text, word2Url } = result;
 
     const audioIsFirst = Math.random() < 0.5;
-    const audioUrl = audioIsFirst ? word1_url : word2_url;
-    const correctWord = audioIsFirst ? word1_text : word2_text;
+    const audioUrl = audioIsFirst ? word1Url : word2Url;
+    const correctWord = audioIsFirst ? word1Text : word2Text;
 
-    const wordsArray = [word1_text, word2_text];
+    const wordsArray = [word1Text, word2Text];
     if (Math.random() < 0.5) {
       [wordsArray[0], wordsArray[1]] = [wordsArray[1], wordsArray[0]];
     }
