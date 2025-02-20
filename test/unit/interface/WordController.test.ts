@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
 import { WordController } from "@/interface/controller/wordController";
-import { IWordUseCase } from "@/application/usecase/IWordUseCase";
-import { Word } from "@/domain/model/Word";
+import { IWordUseCase, IWordDTO } from "@/application/usecase/IWordUseCase";
 
 describe("WordController", () => {
   let wordController: WordController;
@@ -24,19 +23,17 @@ describe("WordController", () => {
   });
 
   test("getRandom should return a random word", async () => {
-    const mockWord: Word = new Word(
-      1,
-      "hello",
-      "https://hello.com",
-      "world",
-      "https://world.com",
-    );
-    mockWordUseCase.getRandom.mockResolvedValue(mockWord);
+    const mockWordDTO: IWordDTO = {
+      words: ["hello", "world"],
+      audioUrl: "hello.mp3",
+      correctIndex: 0,
+    };
+    mockWordUseCase.getRandom.mockResolvedValue(mockWordDTO);
 
     await wordController.getRandom(req as Request, res as Response);
 
     expect(res.status).toHaveBeenCalledWith(200);
-    expect(res.json).toHaveBeenCalledWith(mockWord);
+    expect(res.json).toHaveBeenCalledWith(mockWordDTO);
   });
 
   test("getRandom should handle errors", async () => {
